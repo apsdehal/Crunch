@@ -6,7 +6,7 @@
         id        = "com.apsdehal.muzidownloader"
         version   = "1.0.0">
 
-    <name>Musi Downloader</name>
+    <name>Muzi Downloader</name>
 
     <description>
         An application that lets you download songs from Muzi

@@ -18,7 +18,6 @@ muzi = $.extend(muzi, {
             for(i in data){
                 html += '<li><div>' + data[i].title + '</div>\
                         <div>' + data[i].artist + '</div>\
-                        <div>' + data[i].album + '</div>\
                         </li>';
             }
             html += '</ul>';

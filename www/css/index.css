@@ -1,3 +1,13 @@
 ul{
     list-style-type:none;
 }
+ul li {
+    height: 70px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+ul li:hover{
+    -webkit-box-shadow: 0 0 12px #38c;
+    -moz-box-shadow: 0 0 12px #38c;
+    box-shadow: 0 0 12px #38c;
+}
