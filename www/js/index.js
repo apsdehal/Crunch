@@ -27,28 +27,8 @@ muzi = $.extend(muzi, {
 
     search: {
         init: function(query){
-            if(muzi.search.xhr){
-                muzi.search.xhr.abort()
-                muzi.search.xhr = false
-            }
-            // $.ajax({
-            //     dataType:'json',
-            //     type: 'GET',
-            //     url:'search',
-            //     data: {search:query},
-            //     success: function(data){
-            //         console.log('hello');
-            //         muzi.loadContent(data);
-            //         muzi.search.xhr = false;
-            //     },
-            //     error: function(data, x, y){
-            //         console.log(data);
-            //         console.log(x);
-            //         console.log(y);
-            //     }
-            // });
-            $.getJSON('search', {search:query}, function(data){
-                console.log(data);
+            $.getJSON('search/', {search:query}, function(data){
+                muzi.loadContent(data.tracks);
             })
         }
 
