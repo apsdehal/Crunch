@@ -33,6 +33,7 @@ muzi = $.extend(muzi, {
         }
 
     },
+
     hooks: function(){
         $(".main").delegate('#search_text','keyup',function(e){
                 muzi.search.init(e.target.value);
