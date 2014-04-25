@@ -37,8 +37,11 @@ crunch = $.extend(crunch, {
         var html = '';
             html += '<ul data-role="listview" data-inset="true" data-filter="true">'
             for(i in data){
-                html += '<li class="trackLi" data-mid="' + data[i].id + '"><div>' + data[i].title + '</div>\
-                        <div>' + data[i].artist + '</div>\
+                html += '<li class="trackLi" data-mid="' + data[i].id + '">\
+                        <div class="album-art-div"><img class="album-art" \
+                        src="'+crunch.config.picsRoot+data[i]['albumId']+'.jpg" /></div>\
+                        <div><span>' + data[i].title + '</span>\
+                        <span>' + data[i].artist + '</span></div>\
                         </li>';
             }
             html += '</ul>';

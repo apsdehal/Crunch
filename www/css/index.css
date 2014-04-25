@@ -1,8 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400);
+.main{
+    background-color: #ddd;
+    font-family: Lato sans-serif;
+}
+
 ul{
+    padding-left: 0px;
     list-style-type:none;
 }
 ul li {
     height: 70px;
+    width: 100px;
+    float: left;
+    clear: right;
     cursor: pointer;
     border: 1px solid transparent;
 }
@@ -11,3 +21,18 @@ ul li:hover{
     -moz-box-shadow: 0 0 12px #38c;
     box-shadow: 0 0 12px #38c;
 }
+
+ul li span{
+    height: 15px;
+    display: inline-block;
+    line-height: 15px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    width: 100%;
+}
+ul li img{
+    width: 50%;
+    height: 50%;
+}
+
