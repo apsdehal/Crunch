@@ -2,6 +2,7 @@ crunch = crunch || {};
 crunch = $.extend(crunch, {
 
     current: {
+        track: null,
         nowPlaying: false,
         data: null
     },
@@ -20,8 +21,12 @@ crunch = $.extend(crunch, {
     play: function(id){
         $.get('track/',{id:id}, function(data){
             crunch.current.data = data;
-            var file = crunch.config.music + data.file.split('/').map(function(x){return encodeURIComponent(x);}).join('/');
-            crunch.current.nowPlaying = new Howl({
+
+            if( crunch.current.track !== null )
+                crunch.current.track.unload();
+
+            var file = crunch.config.musicRoot + data.file.split('/').map(function(x){return encodeURIComponent(x);}).join('/');
+            crunch.current.track = new Howl({
                 urls: [file],
                 buffer: true,
             }).play();
