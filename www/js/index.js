@@ -22,13 +22,12 @@ crunch = $.extend(crunch, {
         $.get('track/',{id:id}, function(data){
             crunch.current.data = data;
 
-            if( crunch.current.track !== null )
-                crunch.current.track.unload();
+            if( crunch.media )
+                crunch.media.stop();
 
             var file = crunch.config.musicRoot + data.file.split('/').map(function(x){return encodeURIComponent(x);}).join('/');
-            var media = new Media(file, function(){
-                this.play();
-            });
+            crunch.media = new Media(file);
+            crunch.media.play();
         });
     },
 
