@@ -22,7 +22,7 @@ crunch = $.extend(crunch, {
         $.get('track/',{id:id}, function(data){
             crunch.media.data = data;
 
-            if( crunch.media.nowPlaying )
+            if( crunch.media.nowPlaying == true)
                 crunch.media.stop();
 
             var file = crunch.config.musicRoot + data.file.split('/').map(function(x){return encodeURIComponent(x);}).join('/');
@@ -60,6 +60,13 @@ crunch = $.extend(crunch, {
         crunch.playToggle();
     },
 
+    resume: function(){
+        if(crunch.media && !crunch.media.nowPlaying){
+            crunch.current.play()
+            crunch.playToggle();
+        }
+    },
+
     loadContent: function(data){
         var html = '';
             html += '<ul data-role="listview" data-inset="true" data-filter="true">'
@@ -90,22 +97,26 @@ crunch = $.extend(crunch, {
                 crunch.search.init(e.target.value);
         });
 
-        mainHandle.delegate('.trackLi', 'tap', function(){
+        mainHandle.delegate('.trackLi', 'click', function(){
             crunch.play($(this).attr('data-mid'));
         });
 
-        mainHandle.delegate('.active-pause', 'tap', function(){
+        mainHandle.delegate('.active-pause', 'click', function(){
             crunch.pause();
         });
+        mainHandle.delegate('.active-play', 'click', function(){
+            crunch.resume();
+        });
+
     },
 
     playToggle: function(){
         if(crunch.media.nowPlaying){
             $('.playButton').removeClass('active-play');
-            $('.playButton').removeClass('active-pause');
+            $('.playButton').addClass('active-pause');
         } else {
             $('.playButton').removeClass('active-pause');
-            $('.playButton').removeClass('active-play');
+            $('.playButton').addClass('active-play');
         }
     }
 });
