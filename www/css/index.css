@@ -88,7 +88,7 @@ ul li img{
 }
 .playback .active-pause{
     background-image: url('../img/pause-colored.png');
-    background-size: 25px 20px;
+    background-size: 32px 32px;
 }
 .playback .download{
     background-image: url('../img/download-colored.png');

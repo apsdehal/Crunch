@@ -1,7 +1,7 @@
 crunch = crunch || {};
 crunch = $.extend(crunch, {
 
-    current: {
+    media: {
         track: null,
         nowPlaying: false,
         data: null
@@ -20,14 +20,15 @@ crunch = $.extend(crunch, {
 
     play: function(id){
         $.get('track/',{id:id}, function(data){
-            crunch.current.data = data;
+            crunch.media.data = data;
 
-            if( crunch.media )
+            if( crunch.media.nowPlaying )
                 crunch.media.stop();
 
             var file = crunch.config.musicRoot + data.file.split('/').map(function(x){return encodeURIComponent(x);}).join('/');
             crunch.media = new Media(file);
             crunch.media.play();
+            crunch.postPlay();
         });
     },
 
@@ -52,6 +53,11 @@ crunch = $.extend(crunch, {
 
     seek: function(obj){
 
+    },
+
+    postPlay: function(){
+        crunch.media.nowPlaying = true;
+        crunch.playToggle();
     },
 
     loadContent: function(data){
@@ -84,8 +90,22 @@ crunch = $.extend(crunch, {
                 crunch.search.init(e.target.value);
         });
 
-        mainHandle.delegate('.trackLi', 'click', function(){
+        mainHandle.delegate('.trackLi', 'tap', function(){
             crunch.play($(this).attr('data-mid'));
         });
+
+        mainHandle.delegate('.active-pause', 'tap', function(){
+            crunch.pause();
+        });
     },
+
+    playToggle: function(){
+        if(crunch.media.nowPlaying){
+            $('.playButton').removeClass('active-play');
+            $('.playButton').removeClass('active-pause');
+        } else {
+            $('.playButton').removeClass('active-pause');
+            $('.playButton').removeClass('active-play');
+        }
+    }
 });
