@@ -1,4 +1,4 @@
-muzi = muzi || {};
+crunch = crunch || {};
 
 $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
   var key;
@@ -6,5 +6,5 @@ $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
   key = options.localStorageKey = options.url + '?' + $.param(originalOptions.data);
   //Some urls may actually be complete
   if(options.url.substr(0,4)!='http')
-	options.url=muzi.config.ajaxRoot+options.url;
+	options.url=crunch.config.ajaxRoot+options.url;
 });

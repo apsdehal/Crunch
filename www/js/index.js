@@ -1,22 +1,29 @@
-muzi = muzi || {};
-muzi = $.extend(muzi, {
+crunch = crunch || {};
+crunch = $.extend(crunch, {
 
     initialize: function(){
-        muzi.home();
-        muzi.hooks();
+        crunch.home();
+        crunch.hooks();
     },
 
     home: function(){
         $.getJSON('track/top.php',{},function(data){
-            muzi.loadContent(data);
+            crunch.loadContent(data);
         });
     },
+
+    play: function(id){
+        $.get('track/',{id:id}, function(data){
+            var file = crunch.config.music + data.file.split('/').map(function(x){return encodeURIComponent(x);}).join('/');
+
+        });
+    }
 
     loadContent: function(data){
         var html = '';
             html += '<ul data-role="listview" data-inset="true" data-filter="true">'
             for(i in data){
-                html += '<li><div>' + data[i].title + '</div>\
+                html += '<li class="songLi" mid="' + data[i].id + '"><div>' + data[i].title + '</div>\
                         <div>' + data[i].artist + '</div>\
                         </li>';
             }
@@ -27,7 +34,7 @@ muzi = $.extend(muzi, {
     search: {
         init: function(query){
             $.getJSON('search/', {search:query}, function(data){
-                muzi.loadContent(data.tracks);
+                crunch.loadContent(data.tracks);
             })
         }
 
@@ -35,7 +42,7 @@ muzi = $.extend(muzi, {
 
     hooks: function(){
         $(".main").delegate('#search_text','keyup',function(e){
-                muzi.search.init(e.target.value);
+                crunch.search.init(e.target.value);
         });
     }
 });
