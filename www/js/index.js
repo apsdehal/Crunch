@@ -62,7 +62,8 @@ crunch = $.extend(crunch, {
 
     resume: function(){
         if(crunch.media && !crunch.media.nowPlaying){
-            crunch.current.play()
+            crunch.media.play();
+            crunch.media.nowPlaying = true;
             crunch.playToggle();
         }
     },
@@ -114,6 +115,7 @@ crunch = $.extend(crunch, {
         if(crunch.media.nowPlaying){
             $('.playButton').removeClass('active-play');
             $('.playButton').addClass('active-pause');
+            crunch.media.nowPlaying = false;
         } else {
             $('.playButton').removeClass('active-pause');
             $('.playButton').addClass('active-play');
