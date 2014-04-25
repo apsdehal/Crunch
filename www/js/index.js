@@ -26,10 +26,9 @@ crunch = $.extend(crunch, {
                 crunch.current.track.unload();
 
             var file = crunch.config.musicRoot + data.file.split('/').map(function(x){return encodeURIComponent(x);}).join('/');
-            crunch.current.track = new Howl({
-                urls: [file],
-                buffer: true,
-            }).play();
+            var media = new Media(file, function(){
+                this.play();
+            });
         });
     },
 
