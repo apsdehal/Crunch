@@ -31,6 +31,29 @@ crunch = $.extend(crunch, {
         });
     },
 
+    pause: function(){
+        if(crunch.media)
+            crunch.media.pause();
+    },
+
+    getTotalDuration: function(){
+        if(crunch.media)
+            return crunch.media.getDuration();
+        else
+            return false;
+    },
+
+    getCurrentPosition: function(){
+        if(crunch.media)
+            return crunch.media.getCurrentPosition();
+        else
+            return false;
+    },
+
+    seek: function(obj){
+
+    },
+
     loadContent: function(data){
         var html = '';
             html += '<ul data-role="listview" data-inset="true" data-filter="true">'
