@@ -13,6 +13,7 @@ Media
 ##Contribute
 - Clone the repo and setup the phonegap in your machine by following steps [here](http://phonegap.com/install)
 - You will require android-sdk and a local copy of emulator installed on your machine
+
 ###Build
 - Install all dependencies, androids-sdk, avd emulator
 - `cd /path/to/project/` and run `phonegap run android`

@@ -62,7 +62,7 @@ crunch = $.extend(crunch, {
     },
 
     resume: function(){
-        if(crunch.media && !crunch.media.nowPlaying){
+        if(crunch.media){
             crunch.media.play();
             crunch.playToggle();
         }
