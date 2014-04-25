@@ -33,8 +33,10 @@ crunch = $.extend(crunch, {
     },
 
     pause: function(){
-        if(crunch.media)
+        if(crunch.media){
             crunch.media.pause();
+            crunch.playToggle()
+        }
     },
 
     getTotalDuration: function(){
@@ -56,14 +58,12 @@ crunch = $.extend(crunch, {
     },
 
     postPlay: function(){
-        crunch.media.nowPlaying = true;
         crunch.playToggle();
     },
 
     resume: function(){
         if(crunch.media && !crunch.media.nowPlaying){
             crunch.media.play();
-            crunch.media.nowPlaying = true;
             crunch.playToggle();
         }
     },
@@ -113,12 +113,13 @@ crunch = $.extend(crunch, {
 
     playToggle: function(){
         if(crunch.media.nowPlaying){
-            $('.playButton').removeClass('active-play');
-            $('.playButton').addClass('active-pause');
-            crunch.media.nowPlaying = false;
-        } else {
             $('.playButton').removeClass('active-pause');
             $('.playButton').addClass('active-play');
+            crucnh.media.nowPlaying = false;
+        } else {
+            $('.playButton').removeClass('active-play');
+            $('.playButton').addClass('active-pause');
+            crunch.media.nowPlaying = true;
         }
     }
 });
